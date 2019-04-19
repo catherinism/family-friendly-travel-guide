@@ -1,4 +1,10 @@
 Rails.application.routes.draw do
+
+  root 'sessions#home'
+  get '/signup', to: 'users#create'
+  get '/login', to: 'sessions#new'
+  post '/login', to: 'sessions#create'
+
   resources :destinations
   resources :guides
   resources :ratings

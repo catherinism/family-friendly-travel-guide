@@ -12,12 +12,10 @@ class SessionsController < ApplicationController
       session[:id] = @user.id
       redirect_to guides_path
     else
-      redirect_to '/login'
+      redirect_to 'login'
+    end
   end
 
-  def home
-
-  end
 
   def destroy
     session.clear

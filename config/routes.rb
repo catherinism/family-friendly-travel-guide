@@ -1,14 +1,15 @@
 Rails.application.routes.draw do
 
-  root 'sessions#home'
-  get '/signup', to: 'users#new'
-  get '/login', to: 'sessions#new'
-  post '/login', to: 'sessions#create'
-  delete '/logout', to: 'sessions#destroy'
+   root 'static#home'
 
-  resources :destinations
-  resources :guides
-  resources :ratings
-  resources :users
+   resources :guides do
+     resources :ratings, only: [:create]
+   end
+    resources :users, only: [:new, :create, :show] do
+      resources :guides, only: [:index]
+  end
+
+  resources :sessions, only: [:new, :create, :destroy]
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+
 end

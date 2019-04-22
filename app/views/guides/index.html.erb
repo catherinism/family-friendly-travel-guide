@@ -1,1 +1,6 @@
 <h1>hey </h1>
+
+<% @guides.each do |guide| %>
+  <%= link_to guide.location, guide_path(guide) %>
+  <%= guide.user %>
+<% end %>

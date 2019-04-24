@@ -1,6 +1,6 @@
 <h1> Sign Up </h1>
 
-<%= form_for(@user) do |f| %>
+<%= form_for (@user), url: signup_path do |f| %>
 
   <%= f.label :name %>
   <%= f.text_field :name %>
@@ -10,6 +10,9 @@
 
   <%= f.label :password %>
   <%= f.password_field :password %>
+
+  <%= f.label :password_confirmation %>
+  <%= f.password_field :password_confirmation %>
 
   <%= f.submit "Sign Up" %>
 

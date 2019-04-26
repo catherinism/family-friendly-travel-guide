@@ -2,6 +2,8 @@ class SessionsController < ApplicationController
 
   #render log in form
   def new
+    # @user = User.new
+    # render :new
   end
 
   def create
@@ -10,10 +12,10 @@ class SessionsController < ApplicationController
       session[:user_id] = @user.id
       redirect_to guides_path
     else
+      flash[:message] = "The information you provided does not match our records. Please re-enter your login information or signup."
       redirect_to login_path
     end
   end
-
 
   def destroy
     session.clear

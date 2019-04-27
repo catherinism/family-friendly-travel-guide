@@ -4,12 +4,12 @@ class GuidesController < ApplicationController
   before_action :redirect_if_not_authorized!, only: [:edit, :update, :destroy]
 
   def index
-    if params[:user_id]
-      @user = User.find_by(params[:user_id])
-      @guides = @user.guides
-    else
-      @guides = Guide.all
-    end
+    # if params[:user_id]
+    #   @user = User.find_by(params[:user_id])
+    #   @guides = @user.guides
+    # else
+    #   @guides = Guide.all
+    # end
   end
 
   def new
@@ -17,7 +17,8 @@ class GuidesController < ApplicationController
   end
 
   def create
-    @guide = Guide.create(guide_params)
+    @guide = Guide.new(guide_params)
+    @guide.user_id = current_user.id
     if @guide.save
       redirect_to guide_path(@guide)
     else
@@ -26,13 +27,14 @@ class GuidesController < ApplicationController
   end
 
   def show
+    @guide = Guide.find(params[:id])
   end
 
   def edit
   end
 
   def update
-    if @guides.update(guide_params)
+    if @guide.update(guide_params)
       flash[:message] = "Successfully edited."
       redirect_to guide_path(@guide)
     else
@@ -41,7 +43,7 @@ class GuidesController < ApplicationController
   end
 
   def destroy
-    if @guides.destroy
+    if @guide.destroy
       flash[:message] = "Successfully deleted."
       redirect_to guides_path
     else
@@ -52,7 +54,7 @@ class GuidesController < ApplicationController
   private
 
   def guide_params
-    params.require(:guide).permit(:location, :summary)
+    params.require(:guide).permit(:title, :summary, :destination_id)
   end
 
   def set_guide
@@ -60,7 +62,7 @@ class GuidesController < ApplicationController
   end
 
   def redirect_if_not_authorized!
-    if @guide != current_user
+    if @guide.user_id != current_user.id
       redirect_to '/guides'
     end
   end

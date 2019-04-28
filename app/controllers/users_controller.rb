@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
 
-  #loading the signup platforms
+  #load the signup form
   def new
     @user = User.new
   end

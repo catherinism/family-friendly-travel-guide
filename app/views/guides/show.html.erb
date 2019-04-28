@@ -1,2 +1,15 @@
-<%= @guide.location %>
+<br>
+<br>
+<%= @guide.title %>
+<br>
+<br>
 <%= @guide.summary %>
+<br>
+<br>
+<%= @guide.destination.location %>
+<br>
+<br>
+<%= @guide.user.name if @guide.user %>
+
+<%= link_to "Edit Guide", edit_guide_path %>
+<%= link_to "Delete Guide", guide_path, method: :delete %>

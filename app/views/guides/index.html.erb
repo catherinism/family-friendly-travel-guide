@@ -1,6 +1,3 @@
-<h1>hey </h1>
-
 <% @guides.each do |guide| %>
-  <%= link_to guide.location, guide_path(guide) %>
-  <%= guide.user %>
+  <h2> <%= link_to guide.title, guide_path(guide) %> - <%= guide.destination.location %> - <%= guide.user.name if guide.user %> </h2>
 <% end %>

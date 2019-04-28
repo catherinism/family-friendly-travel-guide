@@ -10,6 +10,7 @@ class SessionsController < ApplicationController
     @user = User.find_by(username: params[:username])
     if @user && @user.authenticate(params[:password])
       session[:user_id] = @user.id
+      flash[:message] = "Welcome, #{@user.name}!"
       redirect_to guides_path
     else
       flash[:message] = "The information you provided does not match our records. Please re-enter your login information or signup."

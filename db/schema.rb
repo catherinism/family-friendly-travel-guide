@@ -13,21 +13,22 @@
 ActiveRecord::Schema.define(version: 2019_04_18_172011) do
 
   create_table "destinations", force: :cascade do |t|
-    t.string "name"
+    t.string "location"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
   create_table "guides", force: :cascade do |t|
-    t.string "location"
+    t.string "title"
     t.string "summary"
     t.integer "destination_id"
+    t.integer "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
   create_table "ratings", force: :cascade do |t|
-    t.string "comment"
+    t.string "value"
     t.integer "user_id"
     t.integer "guide_id"
     t.datetime "created_at", null: false

@@ -1,13 +1,26 @@
 <%= form_for (@guide) do |f| %>
-<%= f.label :location %>
-<%= f.text_field :location %>
-<br>
-<%= f.label :summary %>
-<%= f.text_area :summary %>
-<br>
-<%= f.label :destination %>
-<%= f.text_field :destination %>
-<br>
-<%= f.submit %>
+
+  <%= f.label :title %>
+  <%= f.text_field :title %>
+  <br>
+  <br>
+  <%= f.label :summary %>
+  <%= f.text_area :summary %>
+  <br>
+  <br>
+  <%= f.label :destination_id, "Select a Destination" %>
+  <%= f.collection_select :destination_id, Destination.all, :id, :location, prompt: true %>
+  <br>
+  <%= f.fields_for :destination do |dest| %>
+  <%= dest.label :location %>
+  <%= dest.text_field :location %>
+  <% end %>
+  <br>
+  <%= f.label :summary %>
+  <%= f.range_field :summary, in: 1..5 %>
+
+
+
+  <%= f.submit "Submit Guide" %>
 
 <% end %>

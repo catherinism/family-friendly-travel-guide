@@ -1,15 +1,15 @@
 Rails.application.routes.draw do
 
-  get 'sessions/new'
-  get 'sessions/create'
-  get 'sessions/destroy'
+  # get 'sessions/new'
+  # get 'sessions/create'
+  # get 'sessions/destroy'
 
-   root 'static#home'
+   root 'guides#index'
 
    resources :guides do
      resources :ratings, only: [:create]
    end
-    resources :users, only: [] do
+    resources :users do
       resources :guides, only: [:index]
   end
 

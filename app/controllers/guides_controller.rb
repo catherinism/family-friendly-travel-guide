@@ -16,6 +16,7 @@ class GuidesController < ApplicationController
 
   def new
     @guide = Guide.new
+    @destination = Destination.new
   end
 
   def create
@@ -30,8 +31,11 @@ class GuidesController < ApplicationController
   end
 
   def show
-    @rating = Rating.new
-  end
+      if !logged_in?
+    #@rating = Rating.new
+      flash[:message] = "Log in to view the details."
+      redirect_to root_path
+    end
   end
 
   def edit
@@ -54,7 +58,7 @@ class GuidesController < ApplicationController
   private
 
   def guide_params
-    params.require(:guide).permit(:title, :summary, :destination_id)
+    params.require(:guide).permit(:title, :summary, :destination_id, :destinations)
   end
 
   def set_guide

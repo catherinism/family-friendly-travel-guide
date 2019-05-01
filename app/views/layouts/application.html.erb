@@ -10,7 +10,16 @@
   </head>
 
   <body>
+    <% if !logged_in? %>
+    <%= link_to "Sign Up", new_user_path %>
+    <%= link_to "Sign In", login_path %>
+    <% else %>
     <%= link_to "Logout", logout_path, method: :delete %>
+    <%= link_to "New Guide", new_guide_path %>
+    <% end %>
+
+    <h1> Family-friendly Travel Guide </h1>
+    <%= flash[:message] if flash[:message]%>
     <%= yield %>
   </body>
 </html>

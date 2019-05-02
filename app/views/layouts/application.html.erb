@@ -10,20 +10,34 @@
   </head>
 
   <body>
-    <% if !logged_in? %>
-    <%= link_to "Sign Up", new_user_path %>
-    <%= link_to "Sign In", login_path %>
-    <% else %>
-    <%= link_to "Logout", logout_path, method: :delete %>
-    <%= link_to "New Guide", new_guide_path %>
-    <% end %>
 
-    <h1> Family-friendly Travel Guide </h1>
+    <nav class="navbar navbar-default">
+
+      <div class="container">
+
+        <div class="navbar-header">
+          <%= link_to "Family Friendly Travel Guide", root_path, class: "navbar-brand" %>
+        </div>
+
+        <ul class="nav navbar-nav navbar-right">
+            <% if !logged_in? %>
+            <li> <%= link_to "Sign Up", new_user_path %> </li>
+            <li> <%= link_to "Sign In", login_path %> </li>
+              <% else %>
+              <li> <%= link_to "Logout", logout_path, method: :delete %> </li>
+              <li> <%= link_to "New Guide", new_guide_path %> <li>
+              <% end %>
+        </ul>
+
+      </div>
+
+    </nav>
+
     <%= flash[:message] if flash[:message]%>
 
     <p class="notice"><%= notice %></p>
       <p class="alert"><%= alert %></p>
-      
+
     <%= yield %>
   </body>
 </html>

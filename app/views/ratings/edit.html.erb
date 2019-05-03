@@ -1,0 +1,9 @@
+<h1>Edit Rating</h1>
+
+<%= form_for([@guide, @guide.rating]) do |f| %>
+  <%= f.label :value %>
+  <%= f.text_field :value %>
+
+  <%= f.submit "Submit Rating" %>
+
+  <% end %>

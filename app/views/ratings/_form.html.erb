@@ -1,0 +1,7 @@
+<%= form_for([@guide, @guide.ratings.build]) do |f| %>
+  <%= f.label :value %>
+  <%= f.text_field :value %>
+
+  <%= f.submit "Submit Rating" %>
+
+  <% end %>

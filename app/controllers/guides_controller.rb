@@ -6,22 +6,22 @@ class GuidesController < ApplicationController
   before_action :not_authorized!, only: [:edit, :update, :destroy]
 
   def index
-    if params[:user_id]
-      @user = User.find_by(id: params[:user_id])
-      @guides = @user.guides
-    else
+    if params[:destination].blank?
       @guides = Guide.all
+    else
+      @destination_id = Destination.find_by(id: params[:location_id]).id
+      @guides = Destination.where(destination_id: @destination_id)
     end
   end
 
   def new
-    @guide = Guide.new
-    @destination = Destination.new
+    @guide = current_user.guides.build
+    @destinations = Destination.all.map { |d| [d.location, d.id] }
   end
 
   def create
-    @guide = Guide.new(guide_params)
-    @guide.user = current_user
+    @guide = current_user.guides.build(guide_params)
+    @guide.destination_id = params[destination_id]
     if @guide.save
       flash[:message] = "#{@guide.title} was successfully added."
       redirect_to guide_path(@guide)
@@ -58,7 +58,7 @@ class GuidesController < ApplicationController
   private
 
   def guide_params
-    params.require(:guide).permit(:title, :summary, :destination_id, :destinations)
+    params.require(:guide).permit(:title, :summary, :destination_id)
   end
 
   def set_guide

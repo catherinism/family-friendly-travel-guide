@@ -1,14 +1,9 @@
 Rails.application.routes.draw do
 
-  devise_for :users
-  # get 'sessions/new'
-  # get 'sessions/create'
-  # get 'sessions/destroy'
-
    root 'guides#index'
 
    resources :guides do
-     resources :ratings, only: [:create]
+     resources :ratings
    end
     resources :users do
       resources :guides, only: [:index]

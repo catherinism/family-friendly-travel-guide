@@ -11,15 +11,7 @@
   <%= f.label :destination_id, "Select a Destination" %>
   <%= f.collection_select :destination_id, Destination.all, :id, :location, prompt: true %>
   <br>
-  <%= f.fields_for :destination do |dest| %>
-  <%= dest.label :location %>
-  <%= dest.text_field :location %>
-  <% end %>
   <br>
-  <%= f.label :summary %>
-  <%= f.range_field :summary, in: 1..5 %>
-
-
 
   <%= f.submit "Submit Guide" %>
 

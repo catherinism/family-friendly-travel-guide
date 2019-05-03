@@ -26,6 +26,7 @@ class RatingsController < ApplicationController
       redirect_to guide_path(@guide)
     else
       render :edit
+    end
   end
 
   def destroy

@@ -13,7 +13,20 @@
 <br>
 <br>
 
-<% if @guide.user == current_user %>
-<%= link_to "Edit Guide", edit_guide_path %>
-<%= link_to "Delete Guide", guide_path, method: :delete %>
-<% end %>
+  <%= render @guide.ratings %>
+
+  <br>
+  <br>
+
+  <div>
+    <%= link_to "Rate Guide", new_guide_rating_path(@guide) %>
+  </div>
+
+  <br>
+  <br>
+
+  <% if @guide.user == current_user %>
+  <%= link_to "Back", root_path %>
+  <%= link_to "Edit Guide", edit_guide_path %>
+  <%= link_to "Delete Guide", guide_path, method: :delete %>
+  <% end %>

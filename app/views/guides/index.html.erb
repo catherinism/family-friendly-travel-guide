@@ -1,3 +1,4 @@
+<h2 class="current_destination"> <%= params[:destination] %> </h2>
 <% @guides.each do |guide| %>
-  <h2> <%= link_to guide.title, guide_path(guide) %> - <%= guide.destination.location %> - <%= guide.user.name if guide.user %> </h2>
+  <h2> <%= link_to guide.title, guide_path(guide) %> - <%= guide.destination.location %> </h2>
 <% end %>

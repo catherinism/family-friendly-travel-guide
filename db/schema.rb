@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_04_18_172011) do
+ActiveRecord::Schema.define(version: 2019_05_05_141140) do
 
   create_table "destinations", force: :cascade do |t|
     t.string "location"
@@ -41,6 +41,8 @@ ActiveRecord::Schema.define(version: 2019_04_18_172011) do
     t.string "password_digest"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "uid"
+    t.string "email"
   end
 
 end

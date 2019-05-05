@@ -1,5 +1,5 @@
 class RatingsController < ApplicationController
-  before_action :find_guide
+  before_action :find_guide, except: [:rated]
   before_action :find_rating, only: [:edit, :update, :destroy]
 
   def new
@@ -22,7 +22,7 @@ class RatingsController < ApplicationController
   end
 
   def update
-    if @rating.update(review_params)
+    if @rating.update(rating_params)
       redirect_to guide_path(@guide)
     else
       render :edit

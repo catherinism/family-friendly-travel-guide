@@ -3,8 +3,16 @@ Rails.application.routes.draw do
    root 'guides#index'
 
    resources :guides do
+     collection do
+       get :rated
+     end
      resources :ratings
    end
+
+   resources :destinations do
+    resources :guides
+  end
+
     resources :users do
       resources :guides, only: [:index]
   end
@@ -14,6 +22,8 @@ Rails.application.routes.draw do
 
   get '/login', to: 'sessions#new'
   post '/login', to: 'sessions#create'
+
+  get '/auth/facebook/callback', to: 'sessions#create'
 
   delete '/logout', to: 'sessions#destroy'
 

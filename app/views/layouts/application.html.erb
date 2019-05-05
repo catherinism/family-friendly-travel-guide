@@ -23,6 +23,7 @@
             <% if !logged_in? %>
             <li> <%= link_to "Sign Up", new_user_path %> </li>
             <li> <%= link_to "Sign In", login_path %> </li>
+            <li> <%= link_to "Log In via Facebook", '/auth/facebook' %> </li>
               <% else %>
               <li> <%= link_to "Logout", logout_path, method: :delete %> </li>
               <li> <%= link_to "New Guide", new_guide_path %> <li>
@@ -30,18 +31,20 @@
         </ul>
 
         <ul class="nav navbar-nav">
+          <li> <%= link_to "Rated Guides", rated_guides_path %> <li>
 
           <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"> Destinations <span class="caret"></span></a>
           <ul class="dropdown-menu" role="menu">
             <% Destination.all.each do |destination| %>
               <li>
-                <%= link_to destination.location, guides_path(destination: destination.location), class: "link" %>
+                <%= link_to destination.location, destination_guides_path(destination) %>
               </li>
               <% end %>
             </ul>
               </li>
           </ul>
+
 
       </div>
 

@@ -22,6 +22,7 @@ class GuidesController < ApplicationController
 
   def new
     @guide = current_user.guides.build
+    # @guide.destination_id = Destination.new
     #@guide.user_id = current_user.id
     #@destinations = Destination.all.map { |d| [d.location, d.id] }
   end
@@ -69,7 +70,7 @@ class GuidesController < ApplicationController
   private
 
   def guide_params
-    params.require(:guide).permit(:title, :summary, :destination_id)
+    params.require(:guide).permit(:title, :summary, :destination_location)
   end
 
   def set_guide

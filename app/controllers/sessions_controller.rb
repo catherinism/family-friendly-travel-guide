@@ -7,7 +7,7 @@ class SessionsController < ApplicationController
   end
 
   def create
-    @user = User.find_by(username: params[:username])
+    @user = User.find_by(email: params[:email])
     if @user && @user.authenticate(params[:password])
       session[:user_id] = @user.id
       flash[:message] = "Welcome, #{@user.name}!"
@@ -18,34 +18,21 @@ class SessionsController < ApplicationController
     end
   end
 
-  # def fbcreate
-  #   @user = User.find_or_create_by(uid: auth['uid']) do |u|
-  #     u.username = auth['info']['name']
-  #     u.email = auth['info']['email']
-  #     u.password = auth['uid']
-  #   end
-  #   session[:user_id] = @user.id
-  #   redirect_to guides_path
-  # end
-
-
-  def create_from_omniauth
-    #binding.pry
-    @user = User.find_or_create_by(email: auth[:info][:email]) do |user|
-      user.username = auth[:info][:name]
-      user.password = SecureRandom.hex
+  def fbcreate
+    @user = User.find_or_create_by(uid: auth['uid']) do |u|
+      u.name = auth['info']['name']
+      u.email = auth['info']['email']
+      u.password = SecureRandom.hex
     end
-#binding.pry
+
     session[:user_id] = @user.id
 
-
     if logged_in?
-      flash[:message] = "Successfully authenticated via Google!"
-    else
-      flash[:message] = "Something went wrong. Try again."
-    end
-
-    redirect_to root_path
+          flash[:message] = "Successfully authenticated via Google!"
+        else
+          flash[:message] = "Something went wrong. Try again."
+        end
+        redirect_to root_path
   end
 
   def destroy

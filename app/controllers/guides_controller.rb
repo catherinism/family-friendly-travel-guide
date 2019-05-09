@@ -45,7 +45,7 @@ class GuidesController < ApplicationController
       if !logged_in?
     #@rating = Rating.new
       flash[:message] = "Log in to view the details."
-      redirect_to root_path
+      redirect_to login_path
 
     end
   end
@@ -69,9 +69,21 @@ class GuidesController < ApplicationController
 
   private
 
-  def guide_params
-    params.require(:guide).permit(:title, :summary, :destination_location)
-  end
+    def guide_params
+      params.require(:guide).permit(
+        :title,
+        :summary,
+        :lodging,
+        :itinerary,
+        :destination_location,
+        :airport,
+        :baby_gear_rental,
+        :park,
+        :zoo,
+        :restaurant,
+        :luggage_storage,
+        :image)
+    end
 
   def set_guide
     @guide = Guide.find_by(id: params[:id])

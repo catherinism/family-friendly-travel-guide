@@ -1,13 +1,22 @@
-<h1> Login </h1>
+<div class="row">
 
-<%= form_tag(login_path) do %>
+  <div class="col-md-6">
 
-  <%= label_tag :username %>
-  <%= text_field_tag :username %>
+    <h1> Sign In </h1>
+    <br>
+    <%= form_tag(login_path) do %>
+    <%= label_tag :email %><br>
+    <%= text_field_tag :email, '', size: 60 %><br>
+    <%= label_tag :password %><br>
+    <%= password_field_tag :password, '', size: 60 %><br><br>
+    <%= submit_tag "Sign In", class: "button"%>
 
-  <%= label_tag :password %>
-  <%= password_field_tag :password %>
+    <% end %>
 
-  <%= submit_tag "Sign In" %>
+  </div>
 
-  <% end %>
+  <div class="col-md-6">
+    <%= image_tag "kid.jpg", size: "456x684" %>
+  </div>
+
+</div>

@@ -1,23 +1,51 @@
-<%= form_for (@guide) do |f| %>
-  <%= f.label :title %>
-  <%= f.text_field :title %>
-  <br>
-  <br>
-  <%= f.label :summary %>
-  <%= f.text_area :summary %>
-  <br>
-  <br>
+<div class="form">
 
-  <%= f.label :destination_location, "Destination" %>
-  <%= f.text_field :destination_location, list: "destinations_autocomplete" %>
-  <datalist id="destinations_autocomplete">
-    <% Destination.all.each do |destination| %>
-    <option value="<%= destination.location %>">
+  <h3> New Guide </h3>
+
+  <%= form_for (@guide) do |f| %>
+
+  <div class="col-md-6">
+    <%= f.label :title %><br>
+    <%= f.text_field :title, size: "60%" %><br><br>
+    <%= f.label :destination_location, "Destination (Select or type the location)" %><br>
+    <%= f.text_field :destination_location, size: "60%", list: "destinations_autocomplete" %><br>
+
+    <datalist id="destinations_autocomplete">
+      <% Destination.all.each do |destination| %>
+      <option value="<%= destination.location %>">
+        <% end %>
+      </datalist><br><br>
+
+      <%= f.label :image, "Add an image" %><br>
+      <%= f.file_field :image %><br>
+      <%= f.label :summary %><br>
+      <%= f.text_area :summary, size: "59x4" %><br><br>
+      <%= f.label :airport %><br>
+      <%= f.text_field :airport, size: "60%" %><br><br>
+      <%= f.label :lodging %><br>
+      <%= f.text_field :lodging, size: "59x4" %><br><br>
+
+    </div>
+
+    <div class="col-md-6">
+      <%= f.label :restaurant %><br>
+      <%= f.text_field :restaurant, size: "60%" %><br><br>
+      <%= f.label :park %><br>
+      <%= f.text_field :park, size: "60%" %><br><br>
+      <%= f.label :zoo %><br>
+      <%= f.text_field :zoo, size: "60%" %><br><br>
+
+      <p> Available Nearby? </p>
+      <%= f.label :baby_gear_rental %><br>
+      <%= f.radio_button :baby_gear_rental, "Yes" %> Yes <%= f.radio_button :baby_gear_rental, "No" %> No<br><br>
+      <%= f.label :luggage_storage %><br>
+      <%= f.radio_button :luggage_storage, "Yes" %> Yes <%= f.radio_button :luggage_storage, "No" %> No<br><br>
+      <%= f.label :itinerary %><br>
+      <%= f.text_area :itinerary, size: "59x4" %><br><br>
+      <%= f.submit "Submit Guide", class: "button" %>
+
       <% end %>
-    </datalist>
-    <br>
-    <br>
 
-    <%= f.submit "Submit Guide" %>
+    </div>
 
-<% end %>
+  </div>

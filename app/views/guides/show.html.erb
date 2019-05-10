@@ -1,32 +1,48 @@
-<br>
-<br>
-<%= @guide.title %>
-<br>
-<br>
-<%= @guide.summary %>
-<br>
-<br>
-<%= @guide.destination.location %>
-<br>
-<br>
-<%= @guide.user.name if @guide.user %>
-<br>
-<br>
+<div class="row">
 
-  <%= render @guide.ratings %>
-
-  <br>
-  <br>
-
-  <div>
-    <%= link_to "Rate Guide", new_guide_rating_path(@guide) %>
+  <div class="col-md-12">
+    <h3 class="guide-title"> <%= @guide.title %> </h3>
+    <p class="guide-destination"> <i class="fas fa-globe-americas"></i> <%= @guide.destination.location %></p>
   </div>
 
-  <br>
-  <br>
+  <div class="col-md-6">
+    <%= image_tag(@guide.image, style: 'width:100%') %>
+    <p class="guide-summary"><%= @guide.summary %></p>
+  </div>
 
-  <% if @guide.user == current_user %>
-  <%= link_to "Back", root_path %>
-  <%= link_to "Edit Guide", edit_guide_path %>
-  <%= link_to "Delete Guide", guide_path, method: :delete %>
-  <% end %>
+  <div class="col-md-6">
+    <h2 class="guide-destination">Details</h2>
+    <p><i class="fas fa-plane-departure"></i> <%= @guide.airport %></p>
+    <p><i class="fas fa-bed"></i> <%= @guide.lodging %></p>
+    <p><i class="fas fa-utensils"></i> <%= @guide.restaurant %></p>
+    <p><i class="fas fa-tree"></i> <%= @guide.park %></p>
+    <p><i class="fas fa-hippo"></i> <%= @guide.zoo %></p><br>
+    <h2 class="guide-destination">Nearby</h2>
+  </div>
+
+  <div class="col-md-3">
+    <h2 class="guide-destination"><i class="fas fa-baby-carriage"></i> Baby Gear Rental: <%= @guide.baby_gear_rental %></h2>
+  </div>
+
+  <div class="col-md-3">
+    <h2 class="guide-destination"><i class="fas fa-suitcase-rolling"></i> Luggage Storage: <%= @guide.luggage_storage %></h2>
+  </div>
+
+  <div class="col-md-6">
+    <hr class="my-4">
+    <h2 class="guide-destination">Itinerary</h2>
+    <p><i class="fas fa-map-signs"></i><%= @guide.itinerary %></p>
+  </div>
+
+  <br><br>
+
+  <div class="col-md-6">
+    <br>
+    <%= link_to "Rate Guide", new_guide_rating_path(@guide), class: "trans-button"  %>
+    <% if @guide.user_id == current_user.id %>
+    <%= link_to "Edit Guide", edit_guide_path, class: "trans-button" %>
+    <%= link_to "Delete Guide", guide_path, method: :delete, class: "trans-button" %>
+    <% end %>
+  </div>
+  
+</div>

@@ -1,19 +1,26 @@
-<h1> Sign Up </h1>
+<div class="form">
 
-<%= form_for (@user), url: signup_path do |f| %>
+  <div class="col-md-6">
 
-  <%= f.label :name %>
-  <%= f.text_field :name %>
+    <h1> Sign Up </h1>
+    <br>
+    <%= form_for (@user), url: signup_path do |f| %>
+    <%= f.label :name %><br>
+    <%= f.text_field :name, size: "60%" %><br>
+    <%= f.label :email %><br>
+    <%= f.text_field :email, size: "60%" %><br>
+    <%= f.label :password %><br>
+    <%= f.password_field :password, size: "60%" %><br>
+    <%= f.label :password_confirmation %><br>
+    <%= f.password_field :password_confirmation, size: "60%" %><br><br>
+    <%= f.submit "Sign Up", class: "button" %>
 
-  <%= f.label :username %>
-  <%= f.text_field :username %>
+    <% end %>
 
-  <%= f.label :password %>
-  <%= f.password_field :password %>
+  </div>
 
-  <%= f.label :password_confirmation %>
-  <%= f.password_field :password_confirmation %>
+  <div class="col-md-6">
+    <%= image_tag "kid.jpg", size: "456x684" %>
+  </div>
 
-  <%= f.submit "Sign Up" %>
-
-  <% end %>
+</div>

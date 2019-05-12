@@ -36,13 +36,13 @@
 
   <br><br>
 
-  <div class="col-md-6">
+  <div class="col-md-12">
     <br>
     <%= link_to "Rate Guide", new_guide_rating_path(@guide), class: "trans-button"  %>
     <% if @guide.user_id == current_user.id %>
     <%= link_to "Edit Guide", edit_guide_path, class: "trans-button" %>
-    <%= link_to "Delete Guide", guide_path, method: :delete, class: "trans-button" %>
+    <%= link_to "Delete Guide", guide_path, method: :delete, class: "trans-button", data: { confirm: "Are you sure?"} %>
     <% end %>
   </div>
-  
+
 </div>

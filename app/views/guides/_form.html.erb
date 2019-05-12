@@ -1,7 +1,4 @@
-<div class="form">
-
-  <h3> New Guide </h3>
-
+  <hr class="my-4">
   <%= form_for (@guide) do |f| %>
 
   <div class="col-md-6">
@@ -28,11 +25,11 @@
     </div>
 
     <div class="col-md-6">
-      <%= f.label :restaurant %><br>
+      <%= f.label "Restaurants" %><br>
       <%= f.text_field :restaurant, size: "60%" %><br><br>
-      <%= f.label :park %><br>
+      <%= f.label "Parks" %><br>
       <%= f.text_field :park, size: "60%" %><br><br>
-      <%= f.label :zoo %><br>
+      <%= f.label "Zoos" %><br>
       <%= f.text_field :zoo, size: "60%" %><br><br>
 
       <p> Available Nearby? </p>
@@ -47,5 +44,3 @@
       <% end %>
 
     </div>
-
-  </div>

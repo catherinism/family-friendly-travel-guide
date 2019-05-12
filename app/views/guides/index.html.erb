@@ -1,22 +1,15 @@
-<div class="row">
-
-  <div class="row text-center">
-
-    <h4>Ready for your next family-friendly adventure?</h4>
-    <p>We are.</p>
-    <hr class="my-4">
+<hr class="my-4">
 
     <h3 class="guide"> <%= params[:destination] %> </h3>
-    <% @guides.each do |guide| %>
 
-    <div class="col-md-4">
+      <% @guides.each do |guide| %>
 
-      <%= link_to image_tag(guide.image, style: 'width:350px'), guide_path(guide) %>
-      <h2 class="guide-title"> <%= link_to guide.title, guide_path(guide) %></h2>
-      <p class="guide-destination"><%= guide.destination.location %> </p>
+      <div class="col-md-4">
+
+        <%= link_to image_tag(guide.image, style: 'width:350px'), guide_path(guide) %>
+        <h2 class="guide-title"> <%= link_to guide.title, guide_path(guide) %></h2>
+        <p class="guide-destination"><%= guide.destination.location %> </p>
 
     </div>
 
     <% end %>
-
-  </div>

@@ -7,13 +7,14 @@
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
+
   </head>
 
   <body>
 
     <nav class="navbar navbar-default">
-
-      <div class="container">
+      <div class="container-fluid">
 
         <div class="navbar-header">
           <%= link_to "Family Friendly Travel Guide", root_path, class: "navbar-brand" %>
@@ -23,7 +24,7 @@
             <% if !logged_in? %>
             <li> <%= link_to "Sign Up", new_user_path %> </li>
             <li> <%= link_to "Sign In", login_path %> </li>
-            <li> <%= link_to "Log In via Google", '/auth/google_oauth2' %> </li>
+            <li> <%= link_to "Log In via Facebook", '/auth/facebook' %> </li>
               <% else %>
               <li> <%= link_to "Logout", logout_path, method: :delete %> </li>
               <li> <%= link_to "New Guide", new_guide_path %> <li>
@@ -45,10 +46,9 @@
               </li>
           </ul>
 
-
       </div>
 
-    </nav>
+        </nav>
 
     <%= flash[:message] if flash[:message]%>
 
@@ -58,5 +58,8 @@
 
       </div>
 
+      <br><br>
+
   </body>
+
 </html>

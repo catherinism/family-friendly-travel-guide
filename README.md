@@ -2,6 +2,8 @@
 
 Welcome to FFTG Rails App! An app that will allow a user to keep a record of their family-friendly travel guides. Other users will be able see the guides' details (such as family-friendly airport, baby gear rental, luggage storage, etc.), and rate them once they login.
 
+[Demo](https://www.youtube.com/watch?v=AVdzAv_y1Vc "Demo")
+
 # Installation
 
 Clone this repository, run bundle install, and run 'thin start --ssl' to start up a server.
